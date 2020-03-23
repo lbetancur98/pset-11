@@ -209,7 +209,27 @@ public class Exercises {
   }
 
   public ArrayList<String> selection(ArrayList<String> list, boolean ascending) {
-    return null;
+    if (list == null) {
+      return null;
+    }
+
+    for (int i = 0; i < list.size(); i++) {
+        int targetIndex = i;
+        for (int j = i + 1; j < list.size(); j++) {
+            if (0 > list.get(j).compareTo(list.get(targetIndex)) && ascending) {
+                targetIndex = j;
+            } else if (0 < list.get(j).compareTo(list.get(targetIndex)) && !ascending) {
+                targetIndex = j;
+            }
+        }
+
+        if (targetIndex != i) {
+            String temp = list.get(i);
+            list.set(i, list.get(targetIndex));
+            list.set(targetIndex, temp);
+        }
+    }
+    return list;
   }
 
   public ArrayList<Integer> merge(ArrayList<Integer> list, boolean ascending) {
