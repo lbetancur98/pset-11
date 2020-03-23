@@ -163,7 +163,25 @@ public class Exercises {
   }
 
   public String[] insertion(String[] list, boolean ascending) {
-    return null;
+    if (list == null) {
+      return null;
+    }
+
+    for (int i = 1; i < list.length; i++) {
+      
+        for (int j = i; j > 0; j--) {
+            if (ascending && 0 > list[j].compareTo(list[j - 1])) {
+                String temp = list[j - 1];
+                list[j - 1] = list[j];
+                list[j] = temp;
+            } else if (0 < list[j].compareTo(list[j - 1]) && !ascending) {
+                String temp = list[j - 1];
+                list[j - 1] = list[j];
+                list[j] = temp;
+            }
+        }
+    }
+    return list;
   }
 
   public int[] selection(int[] list, boolean ascending) {
