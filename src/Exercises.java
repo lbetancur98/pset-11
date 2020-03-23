@@ -111,7 +111,34 @@ public class Exercises {
   }
 
   public ArrayList<String> bubble(ArrayList<String> list, boolean ascending) {
-    return null;
+    if (list == null) {
+      return null;
+    }
+
+    Boolean sorted = false;
+
+    while (!sorted) {
+        sorted = true;
+
+        for (int i = 0; i < list.size() - 1; i++) {
+            if (ascending) {
+                if (list.get(i).compareTo(list.get(i + 1)) > 0) {
+                    String temp = list.get(i);
+                    list.set(i, list.get(i + 1));
+                    list.set(i + 1, temp);
+                    sorted = false;
+                }
+            } else {
+                if (list.get(i).compareTo(list.get(i + 1)) < 0) {
+                    String temp = list.get(i);
+                    list.set(i, list.get(i + 1));
+                    list.set(i + 1, temp);
+                    sorted = false;
+                }
+            }
+        }
+    }
+    return list;
   }
 
   public ArrayList<Integer> insertion(ArrayList<Integer> list, boolean ascending) {
