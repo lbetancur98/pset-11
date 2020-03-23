@@ -185,7 +185,27 @@ public class Exercises {
   }
 
   public int[] selection(int[] list, boolean ascending) {
-    return null;
+    if (list == null) {
+      return null;
+    }
+
+    for (int i = 0; i < list.length; i++) {
+        int targetIndex = i;
+        for (int j = i + 1; j < list.length; j++) {
+            if (list[j] < list[targetIndex] && ascending) {
+                targetIndex = j;
+            } else if (list[j] > list[targetIndex] && !ascending) {
+                targetIndex = j;
+            }
+        }
+
+        if (targetIndex != i) {
+            int temp = list[i];
+            list[i] = list[targetIndex];
+            list[targetIndex] = temp;
+        }
+    }
+    return list;
   }
 
   public ArrayList<String> selection(ArrayList<String> list, boolean ascending) {
