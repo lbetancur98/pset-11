@@ -56,7 +56,27 @@ public class Exercises {
     }
 
   public int findMeFaster(String[] list, String target) {
-    return -1;
+    if (list == null || target.equals(null)) {
+      return -1;
+    }
+
+    int lower = 0;
+    int upper = list.length;
+    int mid = 0;
+
+    while (lower <= upper) {
+        mid = (lower + upper) / 2;
+
+        if (0 > list[mid].compareTo(target)) {
+            lower = mid + 1;
+        } else if (0 < list[mid].compareTo(target)) {
+            upper = mid - 1;
+        } else if (list[mid].equals(target)) {
+            return mid;
+        }
+    }
+      
+      return -1;
   }
 
   public int[] bubble(int[] list, boolean ascending) {
